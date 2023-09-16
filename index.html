@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +15,10 @@
   <script>
     // In CHALLENGEs 1-9 you will flesh out some functions
 
+    //adding per
+      //building the obj
+      //return the obj
+
     // To do this, translate each 🧠 set of instructions into a working function
     // ❗ Functions are scaffolded for you, but some of them are missing their parameters
     // ❗ Watch the Guided Project to learn proper debugging technique
@@ -22,18 +27,38 @@
     // 🧠 The function buildPeter builds an object of a certain shape and returns it.
     // 🧠 Example of usage:
     // buildPeter() // should return { firstName: "Peter", lastName: "Pan", age: 12 }
+    
+    //You can implement the buildPeter function to create and return an object with the specified shape. Here's the code for the function:
     function buildPeter() {
-
+    const peter = {
+    firstName: "Peter",
+    lastName: "Pan",
+    age: 12
+    };
+    return peter;
     }
+    const peterObject = buildPeter();
+    console.log(peterObject); 
+    //This function simply returns an object with the properties "firstName," "lastName," and "age" set to their respective values. When you call buildPeter(), it will return the object { firstName: "Peter", lastName: "Pan", age: 12 }.
+
 
     // 👉 CHALLENGE 2
     // 🧠 The function buildUser takes three arguments and uses them to build an object and return it.
     // 🧠 Example of usage:
     // buildUser("John", "Smith", 30) // should return { firstName: "John", lastName: "Smith", age: 30 }
+    
+    //You can implement the buildUser function to create and return an object with the provided arguments as properties. Here's the code for the function:
     function buildUser(firstName, lastName, age) {
+    let person ={}
+        person.firstName = firstName,
+        person.lastName = lastName,
+        person.age = age
+        return person 
+      };
 
-    }
-
+      //This function takes firstName, lastName, and age as arguments and uses them to create an object with properties "firstName," "lastName," and "age," which are set to the provided values. When you call buildUser("John", "Smith", 30), it will return the object { firstName: "John", lastName: "Smith", age: 30 }.
+      
+    
     // 👉 CHALLENGE 3
     // 🧠 The function deletePrice takes an object as its argument and deletes its "price" property if it exists.
     // 🧠 If on the other hand there is no "price" property on the object, a "priceless" property with a value of true is added to it.
@@ -42,9 +67,21 @@
     // 🧠 Examples of usage:
     // deletePrice({ item: "Tesla Model 3", price: 40000 }) // should return { item: "Tesla Model 3" }
     // deletePrice({ item: "Kobo Libra 2" }) // should return { item: "Kobo Libra 2", priceless: true }
-    function deletePrice() {
-
+    
+    //You can implement the deletePrice function as described in the challenge by checking if the object has a "price" property and either deleting it or adding a "priceless" property. Here's the code for the function:
+    function deletePrice(obj) {
+    if (obj.hasOwnProperty("price")) {
+    delete obj.price;
+    } else {
+    obj.priceless = true;
     }
+    return obj;
+    }
+    const obj1={item: "Tesla Model 3", price:40000};
+    console.log(deletePrice(obj1))
+    const obj2={item: "kobo libra 2"};
+    console.log(deletePrice(obj2))
+    //This function first checks if the object (obj) has a "price" property using the hasOwnProperty method. If it does, it deletes the "price" property using the delete operator. If there is no "price" property, it adds a "priceless" property with a value of true. Finally, it returns the modified object.
 
     // 👉 CHALLENGE 4
     // 🧠 The function evenList takes an array as its argument and returns true if the array has an even number of elements, false otherwise.
@@ -52,9 +89,14 @@
     // 🧠 Examples of usage:
     // evenList(['a']) // should return false
     // evenList(['a', 'b']) // should return true
+    
+    //
     function evenList(arr) {
-
+    return arr.length % 2 === 0;
     }
+
+
+    
 
     // 👉 CHALLENGE 5
     // 🧠 The function firstOrLast takes an array as the first argument, and a Boolean as the second.
@@ -62,9 +104,18 @@
     // 🧠 Examples of usage:
     // firstOrLast(['a', 'b'], true) // should return 'a'
     // firstOrLast(['a', 'b'], false) // should return 'b'
-    function firstOrLast() {
-
+    
+    //You can implement the firstOrLast function as described in the challenge by checking the Boolean argument and returning either the first or last element of the array accordingly. Here's the code for the function:
+    function firstOrLast(arr, isFirst) {
+    if (isFirst) {
+    return arr[0];
+    } else {
+    return arr[arr.length - 1];
     }
+    }
+    //In this function, we use the isFirst argument to determine whether to return the first element (arr[0]) or the last element (arr[arr.length - 1]) of the array arr.
+
+
 
     // 👉 CHALLENGE 6
     // 🧠 The function pushElement takes an array as the first argument, and any value we wish as the second.
@@ -72,9 +123,15 @@
     // 🧠 Examples of usage:
     // pushElement([], 1) // should return [1]
     // pushElement(['a', 'b'], 'c') // should return ['a', 'b', 'c']
-    function pushElement() {
-
+    
+    //You can implement the pushElement function as described in the challenge by using the push method to add the second argument as the last element of the array. Here's the code for the function:
+    function pushElement(arr, value) {
+    arr.push(value);
+    return arr;
     }
+    //In this function, we use the push method to add the value to the end of the arr array, and then we return the modified array.
+
+
 
     // 👉 CHALLENGE 7
     // 🧠 The function stripX takes a string as its argument.
@@ -88,9 +145,26 @@
     // 🧠 At each iteration of the loop, if the current character is not "x", then add it to the end of the result array.
     // 🧠 You can merge the result array back into a string by using join. Example: ["f", "o", "o"].join("") yields "foo"
     // 🧠 Do not forget to return your rejoined string!
-    function stripX() {
-
+    
+    //You can implement the stripX function as described in the challenge by splitting the input string into an array of characters, filtering out any occurrences of the letter "x," and then joining the filtered array back into a string. Here's the code for the function:
+    function stripX(inputString) {
+    // Split the input string into an array of characters
+    const characters = inputString.split("");
+    // Create an empty result array to store non-"x" characters
+    const resultArray = [];
+    // Loop over the characters and add non-"x" characters to the result array
+    for (let i = 0; i < characters.length; i++) {
+    if (characters[i] !== "x") {
+      resultArray.push(characters[i]);
     }
+    }
+    // Join the result array back into a string and return it
+    const resultString = resultArray.join("");
+    return resultString;
+    }
+    //This function splits the input string into an array of characters, iterates through each character, and adds it to the resultArray only if it's not equal to "x." Finally, it joins the resultArray back into a string and returns the stripped string.
+
+    
 
     // 👉 CHALLENGE 8
     // 🧠 The function stripChar takes a string as its first argument and a character as its second argument.
@@ -101,9 +175,24 @@
     // ❗ Important Notes:
     // 🧠 Try to solve this problem without looking at how you solved the previous one.
     // 🧠 If you need to look, do not copy & paste code. Take a peek and then work from memory!
-    function stripChar() {
-
+    
+    //You can implement the stripChar function to remove all occurrences of a given character from a string. Here's the code for the function:
+    function stripChar(inputString, charToRemove) {
+    // Initialize an empty result string
+    let resultString = "";
+    //Loop through each character in the input string
+    for (let i = 0; i < inputString.length; i++) {
+    //Check if the current character is not equal to the character to remove
+    if(inputString[i] !== charToRemove) {
+    // If they are not equal, add the current character to the result string
+    resultString += inputString[i];
+    }}
+    // Return the resulting string with the specified character removed
+    return resultString;
     }
+    //In this function, we iterate through each character of the input string, and if the character is not equal to the character to remove, we add it to the resultString. Finally, we return the resultString, which is the input string with the specified character removed.
+
+
 
     // 👉 CHALLENGE 9
     // 🧠 The function getProps takes an object as its argument.
@@ -114,9 +203,22 @@
     // getProps({ lastName: "Smith", age: 35 }) // should return ["lastName"]
     // getProps({ firstName: "Jane", married: false }) // should return ["firstName"]
     // getProps({ name: "Bamby", favFood: "flowers" }) // should return ["name", "favFood"]
-    function getProps() {
-
+    
+    //You can implement the getProps function to extract the property names of an object while excluding the properties "age" and "married." Here's the code for the function:
+    function getProps(obj) {
+    // Get all property names of the object
+    const allProps = Object.keys(obj);
+    // Filter out the properties "age" and "married"
+    const filteredProps = allProps.filter(prop => prop !== "age" && prop !== "married");
+    return filteredProps;
     }
+    //In this function, we first use Object.keys(obj) to get an array of all property names of the input object. Then, we use the filter method to exclude the properties "age" and "married" from the filteredProps array. Finally, we return the filteredProps array, which contains the desired property names
+    
+
+
+
+
+
 
     // 🧪 TESTS, do not work below this line
     // 🧪 TESTS, do not work below this line
